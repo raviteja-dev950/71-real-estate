@@ -8,7 +8,7 @@
 <img src="https://img.shields.io/badge/Frontend-Single_HTML_Vanilla_JS-000000?logo=html5&logoColor=white" alt="Bypass Static">
 <img src="https://img.shields.io/badge/Theme-EstateHub_Blue_Black-2563EB" alt="EstateHub">
 <img src="https://img.shields.io/badge/Status-Completed-20B000" alt="Completed">
-<img src="https://img.shields.io/badge/Screenshots-15-FFB700" alt="15 Screenshots">
+<img src="https://img.shields.io/badge/Screenshots-16-FFB700" alt="15 Screenshots">
 </p>
 
 ## 📖 Project Overview
@@ -52,7 +52,7 @@ Frontend displays:
 - Login with Username, Password, Role (ADMIN / OWNER / BUYER) – localStorage token, user, role
 - No JWT – Simple role selector – Auto login on refresh – Bypass SecurityConfig permitAll – /api/** permitAll
 - On H2 mem restart data is wiped – Need to re-add properties – Can switch to file H2 for persistence
-- Test accounts – admin/admin123 (ADMIN), owner/owner123 (OWNER), ravi/ravi123 (BUYER) – 15 screenshots verified – ADMIN vs OWNER vs BUYER UI
+- Test accounts – admin/admin123 (ADMIN), owner/owner123 (OWNER), ravi/ravi123 (BUYER) – 16 screenshots verified – ADMIN vs OWNER vs BUYER UI
 
 ### 🏠 Properties Feed – Real App – 5 Properties
 
@@ -100,7 +100,7 @@ Frontend displays:
 | Spring Data JPA / Hibernate | 6.4.4.Final | ORM – Property ManyToOne User, User |
 | Spring Security | 6.2.4 | Bypass – permitAll() – No JWT filter – Simple Bearer token check controller |
 | H2 Database | 2.2.x | In-memory realestate – No setup – h2-console enabled – /h2-console |
-| Frontend | Single static/index.html V2 – Vanilla JS – 780px detail-box + Add + Edit + Detail modals + 15 screenshots | No React build – Bypass full stack – Same port |
+| Frontend | Single static/index.html V2 – Vanilla JS – 780px detail-box + Add + Edit + Detail modals + 16 screenshots | No React build – Bypass full stack – Same port |
 | CSS | Pure CSS – Inter + Plus Jakarta Sans 700 800 – Black #111827 + Blue #2563eb + White + Green #16a34a + Red #ef4444 – Real App Premium EstateHub – 16px card radius |
 | Maven | 3.9+ | Build – mvn clean install -DskipTests – mvn spring-boot:run |
 
@@ -126,10 +126,10 @@ Frontend displays:
 │
 ├── src/main/resources/
 │   ├── static/
-│   │   └── index.html – Full Real App V2 in ONE file – 15 screenshots verified – Header EH logo + All/Buy/Rent/Plot/Villa nav + Search city datalist Razole Hyderabad Bangalore + Search button + authArea Sign In – Hero Find Your Dream Property With Zero Brokerage Dream blue – Pills All Homes/Flats/Villas/Plots/For Rent – Hero img 300px Unsplash – Bar Guest browsing • Sign in as Owner • Click any house + count + Add Property green – Grid wrap – Grid auto-fill 290px – Card onclick openDetail + tag VERIFIED + price black + del quickDelete – Body title meta Click to view contact desc – Footer © 2026 EstateHub V2 – Modals: authModal, addModal, detailModal detail-box 1.2fr 0.8fr detail-img + detail-content badge type + Close + dTitle dMeta dPrice dDesc owner-box dOwner + Contact Owner + editDeleteRow Edit Delete + note ADMIN vs OWNER vs BUYER, editModal – JS API /api curFilter allProps currentUser selectedProp showLogin closeAuth showAdd closeAdd closeDetail closeEdit updateAuthUI login register logout render loadProperties apply filterType searchCity addProperty openDetail contactOwner openEditFromDetail saveEdit quickDelete deleteFromDetail doDelete window.onload localStorage user + token + search Enter
+│   │   └── index.html – Full Real App V2 in ONE file – 16 screenshots verified – Header EH logo + All/Buy/Rent/Plot/Villa nav + Search city datalist Razole Hyderabad Bangalore + Search button + authArea Sign In – Hero Find Your Dream Property With Zero Brokerage Dream blue – Pills All Homes/Flats/Villas/Plots/For Rent – Hero img 300px Unsplash – Bar Guest browsing • Sign in as Owner • Click any house + count + Add Property green – Grid wrap – Grid auto-fill 290px – Card onclick openDetail + tag VERIFIED + price black + del quickDelete – Body title meta Click to view contact desc – Footer © 2026 EstateHub V2 – Modals: authModal, addModal, detailModal detail-box 1.2fr 0.8fr detail-img + detail-content badge type + Close + dTitle dMeta dPrice dDesc owner-box dOwner + Contact Owner + editDeleteRow Edit Delete + note ADMIN vs OWNER vs BUYER, editModal – JS API /api curFilter allProps currentUser selectedProp showLogin closeAuth showAdd closeAdd closeDetail closeEdit updateAuthUI login register logout render loadProperties apply filterType searchCity addProperty openDetail contactOwner openEditFromDetail saveEdit quickDelete deleteFromDetail doDelete window.onload localStorage user + token + search Enter
 │   └── application.properties – server.port=9193, datasource jdbc:h2:mem:realestate sa empty, jpa ddl-auto create show-sql false, h2 console enabled path /h2-console
 │
-├── screenshots/ – 15 premium images – V2 Complete
+├── screenshots/ – 16 premium images – V2 Complete
 │   ├── demo1.png – Guest view 3 properties – Zero Brokerage hero – EH logo – Search – All Homes pill active – 3 cards Razole Dream, Hyderabad Villa, Bangalore Plot – ₹25L, ₹85L, ₹45L
 │   ├── demo2.png – Welcome to EstateHub – Sign In modal – Username admin – Password dots – Role hint – Sign In black – Create Account white – Cancel – Demo accounts
 │   ├── demo3.png – Admin logged in – admin • ADMIN pill black + Logout – Welcome admin ADMIN account active – 3 properties with Delete red – + Add Property green
@@ -144,11 +144,13 @@ Frontend displays:
 │   ├── demo12.png – Account created ravi – localhost:9193 says Account created! Now Sign In with same credentials – OK
 │   ├── demo13.png – House Click Detail – Hyderabad Villa – VILLA • VERIFIED – Hyderabad Villa – 📍 Hyderabad • ID 2 – ₹85,00,000 – Luxury Villa with private pool – Owner Details – Contact Owner
 │   ├── demo14.png – Contact Owner popup – localhost:9193 says 📞 Contact Owner for Bangalore Plot Owner admin Phone +91 9XXXX XXXXX (Direct) City Bangalore Price ₹45,00,000 In production Chat Call WhatsApp integration here! Logged in as ravi (BUYER)
-│   └── demo15.png – Extra detail view proof – Hyderabad Villa detail again – V2 working
+│   ├── demo15.png
+│   ├── demo16_api_properties.png – API JSON localhost:9193/api/properties – 3 properties title city type price owner admin – Real backend proof – id 1 Razole Dream House 25L FLAT Razole temple verified direct owner, id 2 Hyderabad Villa 85L VILLA Hyderabad luxury pool 4BHK gated, id 3 Bangalore Plot 45L PLOT Bangalore IT Park 2400 sqft clear title – ownerId 1 – owner username admin – Real API not dummy
+└── – Extra detail view proof – Hyderabad Villa detail again – V2 working
 │
 ├── pom.xml – spring-boot-starter-web, data-jpa, security, H2 runtime, Lombok optional – Java 17 – 3.2.5
 ├── .gitignore – target/, data/, .idea/, *.db, *.log, .mvn/, mvnw, mvnw.cmd
-└── README.md – This file – Exact Project 70 format – 15 screenshots
+└── README.md – This file – Exact Project 70 format – 16 screenshots
 ```
 
 ## ▶ How to Run
@@ -192,7 +194,7 @@ mvn spring-boot:run
 
 Open – Single Port 9193 – Frontend + Backend Same:
 
-- http://localhost:9193/ – Frontend + Backend Same Port – EstateHub V2 – 5 Properties – Click house → Detail View + Contact Owner – 15 screenshots verified
+- http://localhost:9193/ – Frontend + Backend Same Port – EstateHub V2 – 5 Properties – Click house → Detail View + Contact Owner – 16 screenshots verified
 - http://localhost:9193/api/properties – Properties JSON – 5 properties – ₹2.3Cr portfolio – Real App – IDs 1-5 – Razole, Hyderabad, Bangalore
 - http://localhost:9193/h2-console – H2 console – JDBC URL jdbc:h2:mem:realestate – User sa – No password – Tables property, users
 
@@ -247,7 +249,7 @@ fetch('/api/auth/register', {method:'POST', headers:{'Content-Type':'application
 Browser
  │
  ▼
-http://localhost:9193/ – static/index.html V2 – REAL APP – 15 screenshots
+http://localhost:9193/ – static/index.html V2 – REAL APP – 16 screenshots
  │
  ├── Guest – demo1.png – Find Your Dream Property With Zero Brokerage Dream blue hero – All Homes/Flats/Villas/Plots/For Rent pills active All Homes black – Search city... + Search – 3 properties Razole Dream ₹25L, Hyderabad Villa ₹85L, Bangalore Plot ₹45L – VERIFIED badge + ₹ black pill + Click to view contact – Bar Guest browsing • Sign in as Owner to list property • Click any house to see owner contact • 3 properties
  │
@@ -280,7 +282,7 @@ http://localhost:9193/ – static/index.html V2 – REAL APP – 15 screenshots
 Spring Boot 9193 – Single JAR – permitAll – No CORS – Bypass SecurityConfig – CSRF disable
  │
  ▼
-H2 – tables: property, users – Sample Users added! on start – admin ADMIN admin123, owner OWNER owner123 – Sample properties added! on start – 3 properties if count==0 – Razole 25L FLAT, Hyderabad 85L VILLA, Bangalore 45L PLOT – owner admin id1 – Then added via UI POST Hyderabad 2BHK 48L ID4 + Razole Plot 32L ID5 – Final 5 – Portfolio ₹2.35Cr – Users admin OWNER ravi BUYER – 15 screenshots verified
+H2 – tables: property, users – Sample Users added! on start – admin ADMIN admin123, owner OWNER owner123 – Sample properties added! on start – 3 properties if count==0 – Razole 25L FLAT, Hyderabad 85L VILLA, Bangalore 45L PLOT – owner admin id1 – Then added via UI POST Hyderabad 2BHK 48L ID4 + Razole Plot 32L ID5 – Final 5 – Portfolio ₹2.35Cr – Users admin OWNER ravi BUYER – 16 screenshots verified
 ```
 
 ## 🧪 API Testing – 5 Properties – ₹2.3Cr – V2 Detail + Contact
@@ -318,7 +320,7 @@ curl http://localhost:9193/api/properties | jq
 
 | Method | Endpoint | Access | Purpose |
 |---|---|---|---|
-| GET | `/api/properties` | Public | Properties live grid – 5 properties – ₹2.35Cr portfolio – Real App – 15 screenshots – IDs 1-5 |
+| GET | `/api/properties` | Public | Properties live grid – 5 properties – ₹2.35Cr portfolio – Real App – 16 screenshots – IDs 1-5 |
 | POST | `/api/properties` | Public | OWNER/ADMIN Add New Property – Modal 6 fields – Bearer token – demo5 Hyderabad 2BHK + demo7 Razole Plot – Property Published! toast – 3 to 5 |
 | PUT | `/api/properties/{id}` | Public | OWNER/ADMIN Edit Property – V2 – Detail Modal → Edit Modal prefilled – Save Changes – Updated! – Real CRUD – New in V2 |
 | DELETE | `/api/properties/{id}` | Public | OWNER/ADMIN Delete – ✕ red – QuickDelete card + deleteFromDetail detail – BUYER protected – ADMIN any OWNER own |
@@ -346,7 +348,7 @@ Important: With mem + create, data wiped on restart – Properties not found aft
 ### Verified – 15 Screenshots – 5 Properties JSON
 
 - /api/properties – 5 properties JSON – ID1 Razole Dream House 25L FLAT Razole 2BHK near temple verified direct owner no brokerage – ID2 Hyderabad Villa 85L VILLA Hyderabad luxury pool 4BHK gated verified owner – ID3 Bangalore Plot 45L PLOT Bangalore premium IT Park 2400 sqft clear title direct sale – ID4 Hyderabad 2BHK Flat 48L FLAT Hyderabad Kukatpally 1200 sqft semi-furnished verified added via UI POST demo5→demo6 – ID5 Razole Riverside Plot 32L PLOT Razole 1800 SQFT Godavari canal clear title direct verified added via UI demo7→demo8 – Portfolio ₹2.35Cr – Owner admin id1 – Owner contact proof – Click house → Contact Owner demo14
-- /api/auth – Users admin ADMIN admin123, owner OWNER owner123, ravi BUYER ravi123 – Login returns token + id + username + role – localStorage – Detail view owner contact proof – Click house → Contact Owner – Edit/Delete role check – 15 screenshots
+- /api/auth – Users admin ADMIN admin123, owner OWNER owner123, ravi BUYER ravi123 – Login returns token + id + username + role – localStorage – Detail view owner contact proof – Click house → Contact Owner – Edit/Delete role check – 16 screenshots
 
 ## 📸 Screenshots – EstateHub Real App V2 – 15 Images – Complete Flow
 
@@ -440,19 +442,25 @@ Important: With mem + create, data wiped on restart – Properties not found aft
 
 ---
 
+### 16. API Verification – /api/properties – 3 Properties JSON – Real Backend
+
+![API Properties](screenshots/demo16_api_properties.png)
+
+---
+
 ## 🎯 Learning Outcomes – V2 – 15 Screenshots – Top 1% GitHub
 
 - Bypass Full Stack – Single static/index.html V2 served by Spring Boot on same port 9193 – Single JAR – No CORS – Real App not dummy – Detail modal 780px 1.2fr 0.8fr on house click – Main fix owner has to click house you missed option
-- H2 Database – mem vs file – create vs update – DataLoader sample users admin owner + 3 properties – 5 properties – Portfolio ₹2.35Cr sum price – mem wipe vs file persist – 15 screenshots proof
+- H2 Database – mem vs file – create vs update – DataLoader sample users admin owner + 3 properties – 5 properties – Portfolio ₹2.35Cr sum price – mem wipe vs file persist – 16 screenshots proof
 - Security Bypass – permitAll() – Fast Tier 7 – Bearer token simple UUID – No JWT filter – AuthController returns token + user – localStorage – Role ADMIN/OWNER/BUYER
 - Simple localStorage – token + user JSON – id username role – Auto login – Role pill admin•ADMIN owner•OWNER ravi•BUYER top right black – Top right Logout – updateAuthUI()
-- Property Detail View Main Feature V2 – Click card onclick openDetail(id) – Detail Modal – Large image 420px + Owner Details box + Contact Owner – Main Real Estate feature – Like NoBroker MagicBricks – Fixed missing option – 15 screenshots demo11 demo13 demo14 – Owner has to click house now shows owner contact
+- Property Detail View Main Feature V2 – Click card onclick openDetail(id) – Detail Modal – Large image 420px + Owner Details box + Contact Owner – Main Real Estate feature – Like NoBroker MagicBricks – Fixed missing option – 16 screenshots demo11 demo13 demo14 – Owner has to click house now shows owner contact
 - Owner Contact Audit – owner ManyToOne + getOwnerId() + owner?.username fallback verified_owner – Verified Direct Contact No Brokerage – City – BUYER Contact Owner button black – Phone +91 9XXXX Direct – Zero Brokerage Business Model – BUYER only contact – Industry model – demo14 Contact Owner popup
 - Role UI – if ADMIN/OWNER shows + Add Property green + Delete red + Edit white in detail else BUYER hidden – if BUYER shows only Contact Owner – Toast Please Sign In + Only Admin/Owner – ADMIN can delete ANY property OWNER can delete own (demo any) BUYER only contact – QuickDelete event.stopPropagation – Real role protection
 - Real App UI – Inter + Plus Jakarta Sans 700 800 – Black #111827 + Blue #2563eb Dream + White + Green #16a34a Add + Red #ef4444 Delete – Cards 16px radius 290px minmax + ₹ black pill + VERIFIED white pill 9px 800 + hover lift -3px + shadow 12px 30px + Click pointer – Detail modal 780px grid – Owner box #f8fafc #e2e8f0 12px – Contact Owner black 11px – Edit white + Delete red – Note 10px #94a3b8 ADMIN vs OWNER vs BUYER – Premium
-- Toast UX – Alerts Property Published! Account created! Updated! – localhost:9193 says – OK purple – White pills – Real app UX – 15 screenshots with popups
+- Toast UX – Alerts Property Published! Account created! Updated! – localhost:9193 says – OK purple – White pills – Real app UX – 16 screenshots with popups
 - Filters + Search – type filter All Homes active black / Flats / Villas / Plots / For Rent – Instant filterType() active toggle – Live search city contains Hyderabad/Razole/Bangalore – Search button + Enter keypress – apply() city + type – 5 properties filtered – Count live 0 to 5
-- API verification – /api/properties – 5 properties JSON – IDs 1-5 – Owner contact proof – Click house → Contact Owner – /api/auth – Users – token + role – localStorage – 15 screenshots verified real backend not dummy
+- API verification – /api/properties – 5 properties JSON – IDs 1-5 – Owner contact proof – Click house → Contact Owner – /api/auth – Users – token + role – localStorage – 16 screenshots verified real backend not dummy
 - Add Property flow – OWNER modal 6 fields – POST /api/properties Bearer – Property Published! toast OK – 3 to 5 – Hyderabad 2BHK 48L Kukatpally demo5→demo6 + Razole Riverside 32L Godavari demo7→demo8 – Proves scalability – Full stack – Not H2 console
 - Edit flow V2 – Detail → Edit – openEditFromDetail prefilled eTitle eCity eType ePrice eImage eDesc – PUT /api/properties/{id} Bearer – Save Changes – Updated! – Real CRUD – New in V2 – Fixes missing edit option
 - Contact Owner flow – BUYER main business logic – Click card → Detail → Contact Owner – Phone +91 9XXXX – City Price Logged as ravi BUYER – Zero Brokerage Direct Owner – Chat Call WhatsApp integration note – Industry model – Main NoBroker MagicBricks feature – demo14
@@ -497,7 +505,7 @@ GitHub: raviteja-dev950 – 71-real-estate-backend
 
 ## ⭐ Support – 15 Screenshots – Top 1% Portfolio
 
-If you found this project helpful, give it a ⭐ Star on GitHub! – 71 is better than 70 with 15 screenshots + V2 Detail Click Fix!
+If you found this project helpful, give it a ⭐ Star on GitHub! – 71 is better than 70 with 16 screenshots + V2 Detail Click Fix!
 
 ### Repo
 
@@ -524,13 +532,13 @@ owner / owner123 – OWNER – Dashboard 5 Properties – Razole Dream House ₹
 Login BUYER – Zero Brokerage Flow – Main Business Model:
 
 ```text
-ravi / ravi123 – BUYER – Register via POST /api/auth/register – Account created! Now Sign In demo12 – Login – No Add Property green – No Delete red – 5 Properties grid – Razole Dream House ₹25L, Hyderabad Villa ₹85L, Bangalore Plot ₹45L, Hyderabad 2BHK Flat ₹48L, Razole Riverside Plot ₹32L – Click Razole Riverside Plot or Bangalore Plot card → Detail Modal – PLOT • VERIFIED – Title + Meta + Price ₹45,00,000 + Description + Owner Details Owner: admin Verified Direct Contact No Brokerage City: Bangalore + Only Contact Owner button black visible – EditDeleteRow none – Click Contact Owner → Alert 📞 Contact Owner for: Bangalore Plot Owner: admin Phone: +91 9XXXX XXXXX (Direct) City: Bangalore Price: ₹45,00,000 In production: Chat, Call, WhatsApp integration here! Logged in as: ravi (BUYER) – Zero Brokerage Direct Owner – Like NoBroker MagicBricks – Main business model – 15 screenshots demo14 – No brokerage – Direct owner
+ravi / ravi123 – BUYER – Register via POST /api/auth/register – Account created! Now Sign In demo12 – Login – No Add Property green – No Delete red – 5 Properties grid – Razole Dream House ₹25L, Hyderabad Villa ₹85L, Bangalore Plot ₹45L, Hyderabad 2BHK Flat ₹48L, Razole Riverside Plot ₹32L – Click Razole Riverside Plot or Bangalore Plot card → Detail Modal – PLOT • VERIFIED – Title + Meta + Price ₹45,00,000 + Description + Owner Details Owner: admin Verified Direct Contact No Brokerage City: Bangalore + Only Contact Owner button black visible – EditDeleteRow none – Click Contact Owner → Alert 📞 Contact Owner for: Bangalore Plot Owner: admin Phone: +91 9XXXX XXXXX (Direct) City: Bangalore Price: ₹45,00,000 In production: Chat, Call, WhatsApp integration here! Logged in as: ravi (BUYER) – Zero Brokerage Direct Owner – Like NoBroker MagicBricks – Main business model – 16 screenshots demo14 – No brokerage – Direct owner
 ```
 
 Login ADMIN – Full Access – Super User:
 
 ```text
-admin / admin123 – ADMIN – Full access – 5 Properties – ₹2.35Cr Portfolio – + Add Property green – Delete ANY red all cards QuickDelete + deleteFromDetail – Edit ANY white – Detail view any – Contact Owner audit – API /api/properties 5 properties JSON – /api/auth users admin owner ravi – H2 console – Sample Users added! + Sample properties added! – Bypass permitAll – Single JAR – Port 9193 – 15 screenshots demo1 to demo15 – Top 1% GitHub – Better than 70
+admin / admin123 – ADMIN – Full access – 5 Properties – ₹2.35Cr Portfolio – + Add Property green – Delete ANY red all cards QuickDelete + deleteFromDetail – Edit ANY white – Detail view any – Contact Owner audit – API /api/properties 5 properties JSON – /api/auth users admin owner ravi – H2 console – Sample Users added! + Sample properties added! – Bypass permitAll – Single JAR – Port 9193 – 16 screenshots demo1 to demo15 – Top 1% GitHub – Better than 70
 ```
 
 Sample Properties – 5 – ₹2.35Cr Portfolio – 15 Screenshots Verified
@@ -546,5 +554,5 @@ Hyderabad 2BHK Flat – Hyderabad – ₹48,00,000 – FLAT – 2BHK in Kukatpal
 
 Razole Riverside Plot – Razole – ₹32,00,000 – PLOT – 1800 SQFT plot near Godavari canal, clear title, direct owner verified – Owner admin id1 – ID:5 – Added via OWNER modal demo7 filled → demo8 Property Published! popup OK – Proves scalability 3 to 5 – Razole – Godavari canal – 1800 SQFT – Direct owner – Demo11 detail + Demo14 contact owner – V2 main feature proof
 
-Portfolio – ₹25L + ₹85L + ₹45L + ₹48L + ₹32L = ₹2,35,00,000 – ₹2.35Cr – ₹2.3Cr approx – 5 properties – IDs 1-5 – Cities Razole 2, Hyderabad 2, Bangalore 1 – Types FLAT 2, PLOT 2, VILLA 1 – Owner admin – Verified – No Brokerage – Direct Owner – 15 screenshots – V2 – Top 1% GitHub – Better than Project 70 14 screenshots – 71 Complete!
+Portfolio – ₹25L + ₹85L + ₹45L + ₹48L + ₹32L = ₹2,35,00,000 – ₹2.35Cr – ₹2.3Cr approx – 5 properties – IDs 1-5 – Cities Razole 2, Hyderabad 2, Bangalore 1 – Types FLAT 2, PLOT 2, VILLA 1 – Owner admin – Verified – No Brokerage – Direct Owner – 16 screenshots – V2 – Top 1% GitHub – Better than Project 70 14 screenshots – 71 Complete!
 ```
