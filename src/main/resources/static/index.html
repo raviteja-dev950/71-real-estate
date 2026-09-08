@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EstateHub V2 | Real Estate with Detail View</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#f8fafc;color:#0f172a}
+.header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);border-bottom:1px solid #eef2f7;display:flex;justify-content:space-between;align-items:center;padding:12px 22px}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px;display:flex;align-items:center;gap:8px}
+.logo i{width:32px;height:32px;background:#111827;color:white;display:grid;place-items:center;border-radius:9px;font-style:normal}
+.nav{display:flex;gap:18px;font-size:13px;font-weight:500;color:#475569;align-items:center}
+.nav span{cursor:pointer;padding:6px 10px;border-radius:8px}.nav span:hover{background:#f1f5f9;color:#111827}
+.right{display:flex;gap:8px;align-items:center}
+.search{width:210px;padding:10px 13px;border-radius:10px;border:1px solid #e2e8f0;background:#f8fafc;outline:none;font-size:12px}
+.btn{padding:10px 14px;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:12px}
+.btn-dark{background:#111827;color:white}.btn-light{background:white;border:1px solid #e2e8f0}.btn-green{background:#16a34a;color:white}.btn-red{background:#ef4444;color:white}
+.hero{padding:36px 22px 22px;background:white;display:grid;grid-template-columns:1.15fr 0.85fr;gap:20px}
+.hero h1{font-family:'Plus Jakarta Sans';font-size:44px;font-weight:800;line-height:0.95;letter-spacing:-1px}
+.hero h1 em{font-style:normal;color:#2563eb}
+.hero p{color:#64748b;font-size:13px;margin-top:10px;line-height:1.6;max-width:440px}
+.pills{margin-top:16px;display:flex;gap:7px;flex-wrap:wrap}
+.pill{padding:7px 13px;border-radius:999px;border:1px solid #e2e8f0;background:white;font-size:12px;font-weight:500;cursor:pointer}
+.pill.active{background:#111827;color:white}
+.hero-img{border-radius:18px;height:300px;background:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c') center/cover;position:relative}
+.bar{background:#f1f5f9;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:10px 22px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#475569}
+.grid-wrap{padding:20px 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:white;border-radius:16px;border:1px solid #eef2f7;overflow:hidden;transition:0.22s;cursor:pointer}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.08)}
+.img{height:190px;position:relative;background:#e2e8f0}
+.img img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:8px;left:8px;background:white;font-size:9px;font-weight:800;padding:5px 9px;border-radius:999px}
+.price{position:absolute;bottom:8px;left:8px;background:#111827;color:white;padding:6px 10px;border-radius:8px;font-weight:700;font-size:12px}
+.del{position:absolute;top:8px;right:8px}
+.body{padding:12px 14px}
+.body h3{font-size:14px;font-weight:700}
+.meta{font-size:11px;color:#64748b;margin:4px 0}
+.desc{font-size:11px;color:#475569;margin-top:4px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.modal{position:fixed;inset:0;background:rgba(15,23,42,0.55);backdrop-filter:blur(12px);display:none;place-items:center;z-index:100;padding:16px}
+.modal.show{display:grid}
+.box{background:white;width:420px;max-width:95vw;border-radius:18px;padding:20px;max-height:90vh;overflow:auto}
+.box h3{font-family:'Plus Jakarta Sans';font-size:18px;margin-bottom:10px}
+.box input, .box textarea, .box select{width:100%;padding:10px 12px;border-radius:9px;border:1px solid #e2e8f0;background:#f8fafc;margin-bottom:8px;outline:none;font-size:12px}
+.detail-box{width:780px;max-width:96vw;display:grid;grid-template-columns:1.2fr 0.8fr;gap:0;overflow:hidden;padding:0;border-radius:18px}
+.detail-img{height:420px;background:#e2e8f0}
+.detail-img img{width:100%;height:100%;object-fit:cover}
+.detail-content{padding:18px}
+.badge{font-size:10px;font-weight:800;letter-spacing:0.5px;background:#eef2ff;color:#4338ca;padding:5px 9px;border-radius:999px}
+.owner-box{margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+.footer{padding:16px 22px;background:white;border-top:1px solid #eef2f7;display:flex;justify-content:space-between;color:#94a3b8;font-size:10px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:700px){.detail-box{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.hero-img{display:none}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo"><i>EH</i> EstateHub</div>
+  <div class="nav"><span onclick="filterType('')">All</span><span onclick="filterType('FLAT')">Buy</span><span onclick="filterType('RENT')">Rent</span><span onclick="filterType('PLOT')">Plot</span><span onclick="filterType('VILLA')">Villa</span></div>
+  <div class="right">
+    <input id="searchCity" class="search" list="cities" placeholder="Search city...">
+    <datalist id="cities"><option value="Razole"><option value="Hyderabad"><option value="Bangalore"></datalist>
+    <button class="btn btn-light" onclick="searchCity()">Search</button>
+    <div id="authArea"><button class="btn btn-dark" onclick="showLogin()">Sign In</button></div>
+  </div>
+</div>
+
+<div class="hero">
+  <div>
+    <h1>Find Your <em>Dream</em> Property With Zero Brokerage.</h1>
+    <p>Directly from verified owners. Premium flats, villas and plots across India. Trusted by thousands of families.</p>
+    <div class="pills"><div class="pill active" data-t="" onclick="filterType('')">All Homes</div><div class="pill" data-t="FLAT" onclick="filterType('FLAT')">Flats</div><div class="pill" data-t="VILLA" onclick="filterType('VILLA')">Villas</div><div class="pill" data-t="PLOT" onclick="filterType('PLOT')">Plots</div><div class="pill" data-t="RENT" onclick="filterType('RENT')">For Rent</div></div>
+  </div>
+  <div class="hero-img"></div>
+</div>
+
+<div class="bar"><div id="statusText">Guest browsing • Sign in as Owner to list property • Click any house to see owner contact</div><div style="display:flex;gap:8px;align-items:center"><span id="count">0 properties</span><button id="addBtn" class="btn btn-green" style="display:none" onclick="showAdd()">+ Add Property</button></div></div>
+
+<div class="grid-wrap"><div id="grid" class="grid"></div></div>
+
+<div class="footer"><div>© 2026 EstateHub V2 — Click house to view owner contact • ADMIN vs OWNER logic • Built by Ravi Teja</div><div>Verified • No Brokerage • Direct Owner</div></div>
+
+<!-- Login -->
+<div id="authModal" class="modal"><div class="box">
+  <h3>Welcome to EstateHub</h3><p style="font-size:11px;color:#64748b;margin-bottom:10px">ADMIN = delete all • OWNER = add/manage own • BUYER = view only</p>
+  <input id="username" placeholder="Username - admin / owner"><input id="password" type="password" placeholder="Password - admin123 / owner123"><input id="role" placeholder="New? Type OWNER or BUYER">
+  <button class="btn btn-dark" style="width:100%;padding:11px;border-radius:10px;margin-top:6px" onclick="login()">Sign In</button>
+  <button class="btn btn-light" style="width:100%;padding:11px;border-radius:10px;margin-top:6px" onclick="register()">Create Account</button>
+  <button class="btn" style="width:100%;background:none;color:#64748b" onclick="closeAuth()">Cancel</button>
+  <div style="margin-top:10px;background:#f8fafc;border:1px dashed #e2e8f0;padding:8px;border-radius:8px;font-size:10px">Demo: <b>admin/admin123</b> (ADMIN) • <b>owner/owner123</b> (OWNER) • Create <b>buyer</b> for BUYER</div>
+</div></div>
+
+<!-- Add -->
+<div id="addModal" class="modal"><div class="box">
+  <h3>Add New Property</h3><input id="pTitle" placeholder="Title"><div class="row"><input id="pCity" placeholder="City"><select id="pType"><option value="FLAT">FLAT</option><option value="VILLA">VILLA</option><option value="PLOT">PLOT</option><option value="RENT">RENT</option></select></div><div class="row"><input id="pPrice" type="number" placeholder="Price"><input id="pImage" placeholder="Image URL"></div><textarea id="pDesc" rows="3" placeholder="Description"></textarea>
+  <button class="btn btn-dark" style="width:100%;padding:11px;border-radius:10px" onclick="addProperty()">Publish Property</button>
+  <button class="btn btn-light" style="width:100%;padding:11px;border-radius:10px;margin-top:6px" onclick="closeAdd()">Cancel</button>
+</div></div>
+
+<!-- Detail on House Click - THIS IS THE MISSING OPTION -->
+<div id="detailModal" class="modal"><div class="box detail-box">
+  <div class="detail-img"><img id="dImg" src=""></div>
+  <div class="detail-content">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span class="badge" id="dType">FLAT • VERIFIED</span><button class="btn btn-light" style="padding:6px 10px" onclick="closeDetail()">✕ Close</button></div>
+    <h3 id="dTitle" style="margin-top:10px;font-size:20px">Razole Dream House</h3>
+    <div id="dMeta" class="meta" style="margin:8px 0">📍 Razole • Direct from Owner • ID: 1</div>
+    <div style="font-size:22px;font-weight:800;margin:8px 0" id="dPrice">₹ 25,00,000</div>
+    <div id="dDesc" style="font-size:12px;color:#475569;line-height:1.6;margin-top:8px">Description</div>
+    <div class="owner-box">
+      <div style="font-weight:700;font-size:12px">👤 Owner Details (OWNER Click Feature)</div>
+      <div id="dOwner" style="font-size:11px;color:#475569;margin-top:6px">Owner: admin • Verified • Direct Contact - No Brokerage</div>
+      <div style="margin-top:10px;display:grid;gap:6px">
+        <button class="btn btn-dark" style="width:100%;padding:11px;border-radius:10px" onclick="contactOwner()">📞 Contact Owner</button>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px" id="editDeleteRow">
+          <button class="btn btn-light" id="editBtn" onclick="openEditFromDetail()">✏️ Edit</button>
+          <button class="btn btn-red" id="delBtn" onclick="deleteFromDetail()">🗑️ Delete</button>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#94a3b8;margin-top:8px">ADMIN can edit/delete ANY property • OWNER can edit/delete OWN properties only • BUYER can only contact</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- Edit -->
+<div id="editModal" class="modal"><div class="box">
+  <h3>Edit Property</h3><input id="eTitle"><div class="row"><input id="eCity"><select id="eType"><option value="FLAT">FLAT</option><option value="VILLA">VILLA</option><option value="PLOT">PLOT</option><option value="RENT">RENT</option></select></div><div class="row"><input id="ePrice" type="number"><input id="eImage"></div><textarea id="eDesc" rows="3"></textarea>
+  <button class="btn btn-dark" style="width:100%;padding:11px;border-radius:10px" onclick="saveEdit()">Save Changes</button>
+  <button class="btn btn-light" style="width:100%;padding:11px;border-radius:10px;margin-top:6px" onclick="closeEdit()">Cancel</button>
+</div></div>
+
+<script>
+const API='/api'; let allProps=[], curFilter='', currentUser=null, selectedProp=null;
+
+function showLogin(){document.getElementById('authModal').classList.add('show')}
+function closeAuth(){document.getElementById('authModal').classList.remove('show')}
+function showAdd(){document.getElementById('addModal').classList.add('show')}
+function closeAdd(){document.getElementById('addModal').classList.remove('show')}
+function closeDetail(){document.getElementById('detailModal').classList.remove('show')}
+function closeEdit(){document.getElementById('editModal').classList.remove('show')}
+
+function updateAuthUI(){
+  const area=document.getElementById('authArea'), status=document.getElementById('statusText'), addBtn=document.getElementById('addBtn');
+  if(currentUser){
+    area.innerHTML=`<div style="display:flex;gap:6px;align-items:center"><div style="background:#111827;color:white;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:700">${currentUser.username} • ${currentUser.role}</div><button class="btn btn-light" onclick="logout()">Logout</button></div>`;
+    status.innerText=`Welcome, ${currentUser.username} — ${currentUser.role} account active • Click any house to see owner contact • ${currentUser.role==='ADMIN'?'ADMIN: can delete all':currentUser.role==='OWNER'?'OWNER: add & manage your properties':'BUYER: view & contact owner'}`;
+    addBtn.style.display = (currentUser.role==='ADMIN' || currentUser.role==='OWNER') ? 'block' : 'none';
+  } else {
+    area.innerHTML=`<button class="btn btn-dark" onclick="showLogin()">Sign In</button>`;
+    status.innerText=`Guest browsing • Sign in as Owner to list property • Click any house to see owner contact`;
+    addBtn.style.display='none';
+  }
+}
+
+async function login(){
+  const u=document.getElementById('username').value.trim(), p=document.getElementById('password').value.trim();
+  if(!u||!p) return alert('Enter username & password');
+  try{
+    const r=await fetch(`${API}/auth/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+    const d=await r.json();
+    if(r.ok && d.token){localStorage.setItem('token',d.token);localStorage.setItem('user',JSON.stringify(d));currentUser=d;updateAuthUI();closeAuth();loadProperties();}
+    else alert(d.message||'Login failed');
+  }catch(e){alert('Backend not running')}
+}
+async function register(){
+  const u=document.getElementById('username').value.trim(), p=document.getElementById('password').value.trim(), role=(document.getElementById('role').value.trim().toUpperCase()||'BUYER');
+  if(!u||!p) return alert('Enter username & password');
+  try{
+    const r=await fetch(`${API}/auth/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p,role})});
+    const d=await r.json();
+    if(r.ok) alert('Account created! Now Sign In'); else alert(d.message);
+  }catch(e){alert('Register failed')}
+}
+function logout(){localStorage.removeItem('token');localStorage.removeItem('user');currentUser=null;updateAuthUI();loadProperties();}
+
+function render(list){
+  const grid=document.getElementById('grid'), count=document.getElementById('count');
+  count.innerText=`${list.length} properties`;
+  if(!list.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:#94a3b8">No homes found.</div>';return}
+  grid.innerHTML=list.map(p=>`
+    <div class="card" onclick="openDetail(${p.id})">
+      <div class="img"><img src="${p.imageUrl||'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9'}" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9'"><div class="tag">${(p.type||'FLAT')} • VERIFIED</div><div class="price">₹ ${(p.price||0).toLocaleString('en-IN')}</div><div class="del" onclick="event.stopPropagation(); quickDelete(${p.id})">${currentUser && (currentUser.role==='ADMIN'||currentUser.role==='OWNER')?`<span class="btn btn-red" style="padding:5px 8px;font-size:10px">Delete</span>`:''}</div></div>
+      <div class="body"><h3>${p.title}</h3><div class="meta">📍 ${p.city} • ID: ${p.id} • Click to view contact</div><div class="desc">${p.description||''}</div></div>
+    </div>
+  `).join('');
+}
+
+async function loadProperties(){try{const r=await fetch(`${API}/properties`); allProps=await r.json(); apply();}catch(e){}}
+function apply(){let f=[...allProps]; const city=document.getElementById('searchCity').value.trim().toLowerCase(); if(city) f=f.filter(x=> (x.city||'').toLowerCase().includes(city)); if(curFilter) f=f.filter(x=> (x.type||'').toUpperCase()===curFilter); render(f);}
+function filterType(t){curFilter=t; document.querySelectorAll('.pill').forEach(p=> p.classList.toggle('active', (p.dataset.t||'')===t)); apply();}
+function searchCity(){apply();}
+
+async function addProperty(){
+  if(!currentUser) return alert('Sign In as OWNER/ADMIN');
+  const payload={title:document.getElementById('pTitle').value.trim(), city:document.getElementById('pCity').value.trim(), type:document.getElementById('pType').value, price:parseFloat(document.getElementById('pPrice').value), imageUrl:document.getElementById('pImage').value.trim()||'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9', description:document.getElementById('pDesc').value.trim(), ownerId: currentUser.id};
+  if(!payload.title||!payload.city||!payload.price) return alert('Fill Title, City, Price');
+  try{const r=await fetch(`${API}/properties`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+localStorage.getItem('token')},body:JSON.stringify(payload)}); if(r.ok){closeAdd();loadProperties();alert('Property Published!');} else alert('Failed');}catch(e){alert('Failed')}
+}
+
+function openDetail(id){
+  const p=allProps.find(x=> x.id===id); if(!p) return; selectedProp=p;
+  document.getElementById('dImg').src=p.imageUrl||'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9';
+  document.getElementById('dType').innerText=`${p.type} • VERIFIED`;
+  document.getElementById('dTitle').innerText=p.title;
+  document.getElementById('dMeta').innerText=`📍 ${p.city} • Direct from Owner • ID: ${p.id} • OwnerID: ${p.ownerId||p.owner?.id||'1'}`;
+  document.getElementById('dPrice').innerText=`₹ ${(p.price||0).toLocaleString('en-IN')}`;
+  document.getElementById('dDesc').innerText=p.description||'';
+  document.getElementById('dOwner').innerText=`Owner: ${p.owner?.username||'verified_owner'} • Verified • Direct Contact - No Brokerage • City: ${p.city}`;
+  const canEdit = currentUser && (currentUser.role==='ADMIN' || (currentUser.role==='OWNER'));
+  document.getElementById('editDeleteRow').style.display = canEdit ? 'grid' : 'none';
+  if(!currentUser){document.getElementById('editDeleteRow').style.display='none';}
+  document.getElementById('detailModal').classList.add('show');
+}
+function contactOwner(){
+  if(!selectedProp) return;
+  if(!currentUser){ alert(`Please Sign In to contact owner of ${selectedProp.title}\n\nOwner: Verified Owner\nCity: ${selectedProp.city}\nIn real app: Phone, WhatsApp, Email shown here`); showLogin(); return;}
+  alert(`📞 Contact Owner for: ${selectedProp.title}\n\nOwner: ${selectedProp.owner?.username||'verified_owner'}\nPhone: +91 9XXXX XXXXX (Direct)\nCity: ${selectedProp.city}\nPrice: ₹ ${(selectedProp.price||0).toLocaleString('en-IN')}\n\nIn production: Chat, Call, WhatsApp integration here!\n\nLogged in as: ${currentUser.username} (${currentUser.role})`);
+}
+function openEditFromDetail(){
+  if(!selectedProp) return;
+  document.getElementById('eTitle').value=selectedProp.title;
+  document.getElementById('eCity').value=selectedProp.city;
+  document.getElementById('eType').value=selectedProp.type;
+  document.getElementById('ePrice').value=selectedProp.price;
+  document.getElementById('eImage').value=selectedProp.imageUrl||'';
+  document.getElementById('eDesc').value=selectedProp.description||'';
+  closeDetail(); document.getElementById('editModal').classList.add('show');
+}
+async function saveEdit(){
+  if(!selectedProp) return;
+  const payload={title:document.getElementById('eTitle').value.trim(), city:document.getElementById('eCity').value.trim(), type:document.getElementById('eType').value, price:parseFloat(document.getElementById('ePrice').value), imageUrl:document.getElementById('eImage').value.trim(), description:document.getElementById('eDesc').value.trim()};
+  try{const r=await fetch(`${API}/properties/${selectedProp.id}`,{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+localStorage.getItem('token')},body:JSON.stringify(payload)}); if(r.ok){closeEdit();loadProperties();alert('Updated!');} else alert('Update failed - ADMIN/OWNER only');}catch(e){alert('Failed')}
+}
+async function quickDelete(id){ if(!confirm('Delete?')) return; await doDelete(id); }
+async function deleteFromDetail(){ if(!selectedProp) return; if(!confirm('Delete '+selectedProp.title+'?')) return; await doDelete(selectedProp.id); closeDetail();}
+async function doDelete(id){try{const r=await fetch(`${API}/properties/${id}`,{method:'DELETE',headers:{'Authorization':'Bearer '+localStorage.getItem('token')}}); if(r.ok) loadProperties(); else alert('Delete failed');}catch(e){alert('Failed')}}
+
+window.onload=()=>{const saved=localStorage.getItem('user'); if(saved){try{currentUser=JSON.parse(saved)}catch(e){}} updateAuthUI(); loadProperties(); document.getElementById('searchCity').addEventListener('keypress', e=>{ if(e.key==='Enter') searchCity(); }); };
+</script>
+</body>
+</html>
