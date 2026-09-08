@@ -444,7 +444,7 @@ Important: With mem + create, data wiped on restart – Properties not found aft
 
 ### 16. API Verification – /api/properties – 3 Properties JSON – Real Backend
 
-![API Properties](screenshots/demo16_api_properties.png)
+![API Properties](screenshots/demo16.png)
 
 ---
 
