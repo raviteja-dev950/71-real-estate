@@ -489,7 +489,7 @@ Important: With mem + create, data wiped on restart – Properties not found aft
 
 ### Vemula Leela Venkata Ravi Teja
 
-Java Full Stack Developer – Razole, Andhra Pradesh
+Java Full Stack Developer – Andhra Pradesh
 
 100 Java Full Stack Projects Challenge – 71 / 100 Completed – Bypass Track – EstateHub V2 Real Estate
 
